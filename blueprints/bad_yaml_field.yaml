@@ -1,5 +1,5 @@
-spec_version: 2-preview
-description: Initializing a Jira instance
+spec_version: 2
+description: Blueprint for bitnami nginx helm chart 
 
 inputs:
   host:
@@ -9,15 +9,16 @@ inputs:
     description: "Execution host name"
 
 grains:
-  jira:
-      kind: helm
-      spec:
-        source:
-          path: https://github.com/atlassian/data-center-helm-charts.git//src/main/charts/jira
-        host:
-          name: '{{.inputs.host}}'
-        commands:
-          - "dep up src/main/charts/jira"
+
+  nginx:
+    kind: helm
+    spec:
+      source:
+        path: https://github.com/bitnami/charts.git//bitnami/nginx
+      host:
+        name: '{{.inputs.host}}'
+      commands:
+        - dep up bitnami/nginx
 
 asaf:
   this_is_wrong: whoops
