@@ -23,3 +23,17 @@ grains:
         - name: 'test-bucket-1-s3-{{ sandboxid | downcase }}'
       outputs:
         - s3_bucket_arn
+        
+  bucket_2:
+    kind: terraform
+    spec: 
+      source:
+        path: https://github.com/QualiNext/qa-blueprint-validation/tree/master/terraform
+      host:
+        name:
+      inputs:
+        - region: us-west-1
+        - acl: private
+        - name: 'test-bucket-1-s3-{{ sandboxid | downcase }}'
+      outputs:
+        - s3_bucket_arn
